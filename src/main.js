@@ -3,6 +3,20 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import './assets/css/reset.css'
+import vueSwiper from 'vue-awesome-swiper'
+/* 样式的话，我这里有用到分页器，就在全局中引入了样式 */
+import 'swiper/dist/css/swiper.css'
+import VueLazyload from 'vue-lazyload'
+
+Vue.use(vueSwiper);
+
+Vue.use(VueLazyload, {
+  preLoad: 1.3,
+  // error: './assets/image/lazy_load.png',
+  // loading: './assets/image/lazy_load.png',
+  attempt: 1
+})
 
 Vue.config.productionTip = false
 

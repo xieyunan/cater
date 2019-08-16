@@ -1,23 +1,30 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <router-view/>
+    <Header></Header>
+    <Container></Container>
+    <Footer></Footer>
   </div>
 </template>
 
 <script>
+import Header from "./components/header";
+import Footer from "./components/footer";
+import Container from "./views/container";
 export default {
-  name: 'App'
+  name: 'App',
+  data(){
+    return{
+
+    }
+  },
+  components:{
+    Header,
+    Container,
+    Footer
+  }
 }
 </script>
-
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+@import '//at.alicdn.com/t/font_1005023_f8x0g7s1am.css';
+
 </style>

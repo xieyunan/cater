@@ -5,8 +5,11 @@
             <img src="../assets/image/logo.jpg" alt="">
         </div>
         <div class="h_top_rig">
+
           <i class="iconfont icon-buoumaotubiao13"></i>
+          <router-link :to="{ path: '/login/login.vue'}">
           <i class="iconfont icon-more1"></i>
+          </router-link>
         </div>
       </div>
   </div>
@@ -20,7 +23,10 @@ export default {
   },
   methods:{
     gohome(){
-      this.$router.push('../views/index.vue')
+      // this.$router.push('../views/index.vue')
+    },
+    goLogin(){
+      this.$router.push({path:'/login/login.vue'})
     }
   }
 }

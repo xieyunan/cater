@@ -87,7 +87,7 @@ export default {
             // console.log(res)
             this.soundListone = res.data.music.objects_sound
             this.guangboList = res.data.music.objects_gangbo
-            console.log(this.guangboList)
+            // console.log(this.guangboList)
         }).catch(); 
     }
 }

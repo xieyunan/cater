@@ -5,19 +5,20 @@
           <li v-for="(item,index) in list" :key="index" :class="item.flag?'active':''" @click="detail(index)">{{item.name}}</li>
         </ul>
       </div>
-      <!-- <music></music> -->
-      <recommend></recommend>
-      <!-- <classify></classify> -->
+      <Music v-if="tab == 0"></Music>
+      <Recommend v-if="tab == 1"></Recommend>
+      <Classify v-if="tab == 2"></Classify>
     </div>
 </template>
 
 <script>
-// import music from './music'
-import recommend from './recommend/recommend'
-// import classify from './classify'
+import Music from './music/music.vue'
+import Recommend from './recommend/recommend.vue'
+import Classify from './classify/classify.vue'
 export default {
     data () {
         return {
+          tab:1,
             list:[
               {id:1,name:"音单",flag:false},
               {id:2,name:"推荐",flag:true},
@@ -27,17 +28,19 @@ export default {
         }
     },
     components:{
-      // music,
-      recommend,
-      // classify
+      Music,
+      Recommend,
+      Classify
     },
     methods:{
       detail(id){
         //forEach遍历---filter过滤，返回符合条件的数组
         this.list.forEach(el=>{
-          el.flag = false
+          el.flag = false;
         })
           this.list[id].flag = !this.list[id].flag
+          this.tab = id
+          // console.log(this.tab)
       }
     }
     

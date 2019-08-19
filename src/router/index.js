@@ -1,15 +1,14 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import container from '@/views/container.vue'
+import { resolve } from 'url';
 
 Vue.use(Router)
 
 export default new Router({
   routes: [
     {
-      path: '/',
-      name: 'container',
-      component: container
+      path:'/login',
+      component:resolve =>require(['@/views/login/login.vue'],resolve)
     }
   ]
 })

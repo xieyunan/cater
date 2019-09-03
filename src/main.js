@@ -8,13 +8,18 @@ import vueSwiper from 'vue-awesome-swiper'
 /* 样式的话，我这里有用到分页器，就在全局中引入了样式 */
 import 'swiper/dist/css/swiper.css'
 import VueLazyload from 'vue-lazyload'
+import axios from 'axios';
 
 Vue.use(vueSwiper);
+Vue.prototype.$http = axios.create({
+  baseURL:'/static/data/'
+})
+
 
 Vue.use(VueLazyload, {
   preLoad: 1.3,
-  // error: './assets/image/lazy_load.png',
-  // loading: './assets/image/lazy_load.png',
+  error: require('./assets/image/lazy_load.png'),
+  loading: require('./assets/image/lazy_load.png'),
   attempt: 1
 })
 

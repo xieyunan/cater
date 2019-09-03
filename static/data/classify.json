@@ -1,31 +1,12 @@
 {
-    "listTest":[{
-        "src": "http://static.missevan.com/app/46.png",
-        "detail":"有声漫画"
-    },{
-        "src": "http://static.missevan.com/app/5.png",
-        "detail":"广播剧"
-    },{
-        "src": "http://static.missevan.com/app/8.png",
-        "detail":"音乐"
-    },{
-        "src": "http://static.missevan.com/app/54.png",
-        "detail":"催眠"
-    },{
-        "src": "http://static.missevan.com/app/26.png",
-        "detail":"娱乐"
-    },{
-        "src": "http://static.missevan.com/app/41.png",
-        "detail":"日抓"
-    },{
-        "src": "http://static.missevan.com/app/6.png",
-        "detail":"听书"
-    },{
-        "src": "http://static.missevan.com/app/52.png",
-        "detail":"配音"
-    },{
-        "src": "http://static.missevan.com/app/65.png",
-        "detail":"铃声"
-    }
+    "listTest":[
+        {"title": "有声漫画", "id": "46", "pic": "http://static.missevan.com/app/46.png"},
+        {"title": "广播剧", "id": "5", "pic": "http://static.missevan.com/app/5.png"},
+        {"title": "音乐", "id": "8", "pic": "http://static.missevan.com/app/8.png"},
+        {"title": "催眠", "id": "54", "pic": "http://static.missevan.com/app/54.png"},
+        {"title": "娱乐", "id": "26", "pic": "http://static.missevan.com/app/26.png"},
+        {"title": "日抓", "id": "41", "pic": "http://static.missevan.com/app/41.png"},
+        {"title": "听书", "id": "6", "pic": "http://static.missevan.com/app/6.png"},
+        {"title": "铃声", "id": "65", "pic": "http://static.missevan.com/app/65.png"}
 ]
 }

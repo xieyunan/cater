@@ -1,116 +1,67 @@
 <template>
-    <div class="login">
-        <h2>登录猫耳FM</h2>
-            <p class="loginWay">
-                <span :class="loginWay?'on':''" @click="loginWay = !loginWay">短信登录</span>
-                <span :class="{on: !loginWay}" @click="loginWay = !loginWay">密码登录</span>
-            </p>
-        <div  v-show="loginWay">
-            <span class="phone">
-                <input type="text" placeholder="请输入手机号" v-model="phone" maxlength="11">
-                <button disabled="!rightPhone" class="code" :class="{right_phone:rightPhone}" @click.prevent="getCode">{{compoteTime>0?`已发送(${compoteTime})s`:'获取验证码'}}</button>
-            </span>
-            <input type="text" placeholder="验证码">
-            <button class="caozuo goLogin" >登录</button>
-        </div>
-       <div v-show="loginWay ==false">
-           <div v-if="register">
-               <input type="text" placeholder="手机/邮箱/用户名" maxlength="11" v-model="phone">
-                <input type="password" placeholder="密码" v-model="password">
-                <input type="text" placeholder="验证码">
-                <button class="caozuo goLogin" @click="login">登录</button>
-                <button class="caozuo goZuce" v-show="loginWay ==false" @click="register = false">注册</button>
-           </div>
-            <div v-else>
-                <input type="text" placeholder="手机/邮箱/用户名" v-model="phone">
-                <input type="password" placeholder="密码" v-model="password">
-                <input type="password" placeholder="确认密码" v-model="repeat">
-                <input type="text" placeholder="验证码">
-                <button class="caozuo zhuce goLogin" @click="addUser()">确定</button>
-                <button class="caozuo zhuce goZuce" @click="cancel()">取消</button>
+    <div style="padding:0 4%;">
+        <div class="top">
+            <div>
+                <span class="allmore"></span>
+                <p class="all">全部音单</p>
             </div>
+           <p class="classify">
+               <span>类型</span>
+               <i class="iconfont icon-right"></i>
+           </p>
+        </div>
+        
+        <ul>
+            <li v-for="(item,index) in musicList" :key="index" class="list">
+                <div class="bg">
+                <img :src="item.front_cover" alt="" class="imgs">
+                </div>
+                <p class="title">{{item.title}}</p>
+                <p class="music_count">
+                    <i class="iconfont icon-music1"></i>
+                    {{item.music_count}}
+                </p>
+            </li>
             
-       </div>
-       
+        </ul>
     </div>
 </template>
-
 <script>
+
 export default {
     data(){
         return{
-            loginWay:true, //true短信登录
-            register:true, //注册
-            phone:'',
-            password:'',
-            repeat:'', //确认密码
-            compoteTime:0 //计时
+            musicList:[]
         }
     },
-    computed:{
-        rightPhone(){
-            return /^1\d{10}$/.test(this.phone)
-        }
-    },
-    methods:{
-        login(){
-            if(localStorage.getItem("phone") === this.name&&localStorage.getItem(password) === this.password){
-                alert("登录成功")
-                this.phone = ''
-                this.password = ''
-            }else{
-                alert("用户名/密码输入不正确")
-            }
-        },
-        addUser(){
-            if(this.password == this.repeat){
-               localStorage.setItem('phone',this.phone);
-                localStorage.setItem('password',this.password); 
-                this.phone = ''
-                this.password = ''
-                this.repeat = ''
-                this.register = true
-            }else{
-                alert("两次输入不一致")
-            }
-        },
-        getCode(){
-            debugger;
-            //倒计时
-            //点击一次启动一次计时器
-            if(!compoteTime){
-                this.compoteTime = 30
-                setInterval(function(){
-                    this.compoteTime --
-                    if(this.compoteTime<= 0){
-                        //  this.compoteTime = 30
-                        clearInterval()
-                    }
-                },1000)
-                //发送请求（向指定手机号发送验证码）
-            }
-            
-        }
+    mounted(){
+        this.$http.get('tagalbum.json').then((res)=>{
+            // console.log(res)
+            this.musicList = res.data.albums;
+        })
     }
 }
 </script>
-
 <style scoped>
-.login{
-    /* margin-top:10px;  */
-    padding: 25px 35px;
-    text-align: center;
+.top{display: flex;justify-content: space-between;line-height: 50px;}
+.allmore{display: inline-block;width: 3px;height: 22px; background: #000;position: relative;top: 5px;}
+.all{font-size: 16px;display: inline-block;margin-left: 5px;}
+.classify{padding:0 3px 0 8px; height: 24px;border-radius: 10px;border: 1px solid #ccc;margin-top: 13px;line-height: 24px;box-sizing: border-box;background: #fff;}
+.iconfont{color: #999;font-size: 14px;}
+ul{display: flex;flex-wrap: wrap;justify-content: space-between;}
+.list{width: 164px;margin-bottom: 10px;position: relative;}
+.bg{
+    width: 164px;
+    background: url('http://static.missevan.com/assets/m/images/build/album-cover.efe70663.png')no-repeat;
+    background-size: contain;
+    margin-bottom: 5px;
 }
-h2{font-size: 18px;font-weight: normal;}
-.loginWay{line-height: 38px;margin: 10px 0;}
-.loginWay span{display: inline-block;padding: 0 8px;}
-.on{color: #c14a3f;border-bottom: 1px solid #c14a3f;}
-input{display: block;width: 290px; height: 40px;margin: 0 auto 10px; border: 1px solid #ccc;border-radius: 3px;padding-left: 5px;box-sizing: border-box;}
-.phone{display:block;position: relative;}
-.code{position: absolute;top: 10px;right: 15px;color: #ccc;border: 0;outline: none;background: #fff;}
-.right_phone{color: #333;}
-.caozuo{width: 290px; height: 40px;margin: 0 auto 10px; border: 1px solid #ccc;border-radius: 3px;box-sizing: border-box;font-size: 16px;}
-.zhuce{width: 100px;}
-.goLogin{background: #c14a3f;color: #fff;}
-.goZuce{background: #fff;}
+.imgs{
+    width: 146px;
+    height: 146px;
+    border-radius: 5px;
+    
+}
+.music_count{width: 146px;height: 28px;background: linear-gradient(180deg,transparent,rgba(0,0,0,.26)); position: absolute;bottom: 48px;right: 18px;border-radius: 2px;color: #fff;text-align: right;padding-right: 6px;line-height: 34px;font-size: 12px;box-sizing: border-box;}
+.icon-music1{font-size: 12px;color: #fff}
 </style>

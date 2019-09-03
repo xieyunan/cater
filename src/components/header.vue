@@ -1,13 +1,14 @@
 <template>
   <div class="header">
       <div class="header_top">
-        <div class="h_top_left" @click="gohome">
+        <div class="h_top_left" @click="$router.push('./')">
             <img src="../assets/image/logo.jpg" alt="">
         </div>
         <div class="h_top_rig">
-
+          <router-link :to="{ path: '/search'}">
           <i class="iconfont icon-buoumaotubiao13"></i>
-          <router-link :to="{ path: '/login/login.vue'}">
+          </router-link>
+          <router-link :to="{ path: '/login'}">
           <i class="iconfont icon-more1"></i>
           </router-link>
         </div>
@@ -22,9 +23,6 @@ export default {
     }
   },
   methods:{
-    gohome(){
-      // this.$router.push('../views/index.vue')
-    },
     goLogin(){
       this.$router.push({path:'/login/login.vue'})
     }
@@ -43,7 +41,7 @@ export default {
   padding: 0 3%;
 }
 .h_top_rig i{
-  font-size: 20px;
+  font-size: 19px;
 }
 .h_top_rig .icon-buoumaotubiao13{
   margin-right: 10px;

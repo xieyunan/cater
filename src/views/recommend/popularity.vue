@@ -1,6 +1,5 @@
 <template>
     <div>
-        <swipter></swipter>
         <div class="sound">
             <div class="top">
                 <p><i class="iconfont icon-wodexinshi left"></i>人气M音</p>
@@ -66,7 +65,6 @@
 </template>
 
 <script>
-import Axios from 'axios'
 export default {
     data(){
         return{
@@ -77,13 +75,11 @@ export default {
         }
     },
     mounted() {
-        let url = "/static/data/people.json"
-        Axios.get(url).then(res => {
+        this.$http.get('people.json').then(res => {
             this.soundList = res.data.info.sound
             this.channelList = res.data.info.channel
         }).catch(); 
-        let url1 = "/static/data/list.json"
-        Axios.get(url1).then(res => {
+         this.$http.get('list.json').then(res => {
             // console.log(res)
             this.soundListone = res.data.music.objects_sound
             this.guangboList = res.data.music.objects_gangbo

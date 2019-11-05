@@ -97,7 +97,7 @@ export default {
 .icon-more1{font-size: 22px;}
 .searchInput{width: 250px;height: 33px;border-radius: 3px;margin-top: 10px;border: 1px solid #ccc;padding-left: 30px;box-sizing: border-box;margin-top: 0px;}
 .icon-buoumaotubiao13.tag1{position: absolute;top: 10px;left:8px;color: #333;transform: rotateY(180deg);font-size: 14px;}
-.delete{position: absolute;top: 5px;left: 245px;color: #999;font-size: 16px;}
+.delete{position: absolute;top: 5px;left: 230px;color: #999;font-size: 16px;}
 .hot{border-bottom: 1px solid #ccc;line-height: 38px;margin-bottom: 10px;}
 .hotlist{display: inline-block; padding: 2px 10px;border: 1px solid #ccc;border-radius:15px;margin: 6px 5px;}
 .keywordList{line-height: 40px;}
